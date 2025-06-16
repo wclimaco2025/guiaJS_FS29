@@ -1,5 +1,5 @@
 // vite.config.js
 export default {
-    base: '/guiaJS_FS29/',
+    base: 'https://github.com/wclimaco2025/',
   }
   
