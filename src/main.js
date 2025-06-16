@@ -208,6 +208,69 @@ function encontrarMayor(num1, num2) {
 </div>
 </section>`;
 
+// HTML del ejercicio 5
+const ejercicio5 = 
+`<section class="exercise">
+    <div class="exercise-header">
+        <h3>Ejercicio 5: Descuentos en Tienda de Coches</h3>
+        <span class="toggle-icon">▼</span>
+    </div>
+    <div class="exercise-content" id="exercise-5">
+        <div class="code-section">
+            <h4>📝 Código:</h4>
+            <pre><code>// Ejercicio 5: Calcular descuentos en tienda de coches Ford
+function calcularDescuentoCoche(modelo, precio) {
+let descuento = 0;
+let porcentajeDescuento = 0;
+
+switch(modelo.toUpperCase()) {
+case 'FORD FIESTA':
+porcentajeDescuento = 5;
+break;
+case 'FORD FOCUS':
+porcentajeDescuento = 10;
+break;
+case 'FORD ESCAPE':
+porcentajeDescuento = 20;
+break;
+default:
+porcentajeDescuento = 0;
+}
+
+descuento = precio * (porcentajeDescuento / 100);
+const precioFinal = precio - descuento;
+
+return {
+modelo: modelo,
+precioOriginal: precio,
+porcentajeDescuento: porcentajeDescuento,
+descuento: descuento,
+precioFinal: precioFinal
+};
+}</code></pre>
+        </div>
+        <div class="test-section">
+            <h4>🧪 Prueba el código:</h4>
+            <div class="grid">
+                <div class="form-group">
+                    <label>Modelo del coche:</label>
+                    <select id="modelo5">
+                        <option value="">Seleccionar modelo...</option>
+                        <option value="FORD FIESTA">Ford Fiesta - 5% descuento</option>
+                        <option value="FORD FOCUS">Ford Focus - 10% descuento</option>
+                        <option value="FORD ESCAPE">Ford Escape - 20% descuento</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Precio del coche:</label>
+                    <input type="number" id="precio5" placeholder="Ej: 25000">
+                </div>
+            </div>
+            <button class="btn" id="btn-5">Calcular Descuento</button>
+            <div id="resultado5"></div>
+        </div>
+    </div>
+</section>`;
 
 // Desarrollo de los Ejercicios
 //<!-- Ejercicio 1 -->
@@ -343,8 +406,57 @@ const probarEjercicio4 = ()=>{
     mostrarResultado('resultado4', `🔢 ${resultado}`); 
 }
 
+// Ejercicio 5: Descuentos en coches
+function calcularDescuentoCoche(modelo, precio) {
+    let descuento = 0;
+    let porcentajeDescuento = 0;
+    
+    switch(modelo.toUpperCase()) {
+        case 'FORD FIESTA':
+            porcentajeDescuento = 5;
+            break;
+        case 'FORD FOCUS':
+            porcentajeDescuento = 10;
+            break;
+        case 'FORD ESCAPE':
+            porcentajeDescuento = 20;
+            break;
+        default:
+            porcentajeDescuento = 0;
+    }
+    
+    descuento = precio * (porcentajeDescuento / 100);
+    const precioFinal = precio - descuento;
+    
+    return {
+        modelo: modelo,
+        precioOriginal: precio,
+        porcentajeDescuento: porcentajeDescuento,
+        descuento: descuento,
+        precioFinal: precioFinal
+    };
+}
+const probarEjercicio5 = ()=>{
+    const modelo = document.querySelector('#modelo5').value;
+    const precio = parseFloat(document.querySelector('#precio5').value);
+
+    if (!modelo || isNaN(precio)) {
+        mostrarResultado('resultado5', '❌ Por favor selecciona un modelo e ingresa un precio válido');
+        return;
+    }
+
+    const resultado = calcularDescuentoCoche(modelo, precio);
+    mostrarResultado('resultado5', `
+        <strong>🚗 Tienda de Coches Ford:</strong><br>
+        🏷️ Modelo: ${resultado.modelo}<br>
+        💵 Precio Original: USD $${resultado.precioOriginal.toFixed(2)}<br>
+        🎯 Descuento: USD $${resultado.porcentajeDescuento}%<br>
+        💸 Ahorro: USD $${resultado.descuento.toFixed(2)}<br>
+        💰 Precio Final: USD $${resultado.precioFinal.toFixed(2)}
+    `); 
+} 
 //Inyección del HTML
-app.innerHTML = contenedorPrincipal + ejercicio1 + ejercicio2 + ejercicio3 + ejercicio4;
+app.innerHTML = contenedorPrincipal + ejercicio1 + ejercicio2 + ejercicio3 + ejercicio4 + ejercicio5;
 
 
 const exerciseHeader = document.querySelector(".exercise-header");
@@ -398,3 +510,6 @@ btnEjercicio3.addEventListener("click", probarEjercicio3);
 //Ejecutar Ejercicio 4, asignando evento de clic al boton y llamando a la función de prueba
 const btnEjercicio4 = document.querySelector("#btn-4");
 btnEjercicio4.addEventListener("click", probarEjercicio4);
+
+const btnEjercicio5 = document.querySelector("#btn-5");
+btnEjercicio5.addEventListener("click", probarEjercicio5);
