@@ -42,7 +42,7 @@ function verificarMayoriaEdad(edad) {
                             <label for="edad1">Ingresa tu edad:</label>
                             <input type="number" id="edad1" placeholder="Ej: 25">
                         </div>
-                        <button class="btn">Verificar Edad</button>
+                        <button class="btn" id="btn-1">Verificar Edad</button>
                         <div id="resultado1"></div>
                     </div>
                 </div>
@@ -63,7 +63,12 @@ function toggleExercise(numero) {
         }
 
 // Desarrollo del Ejercicio
-  const probarEjercicio1 = () => {
+function verificarMayoriaEdad(edad) {
+    return edad >= 18 
+        ? 'Eres mayor de edad'
+        : 'Eres menor de edad';
+}
+const probarEjercicio1 = () => {
      const edad = parseInt(document.querySelector('#edad1').value);
             if (isNaN(edad) || edad < 0) {
                 mostrarResultado('resultado1', '❌ Por favor ingresa una edad válida');
@@ -79,12 +84,19 @@ function toggleExercise(numero) {
 
 const exerciseHeader = document.querySelector(".exercise-header");
 
- // Abrir el primer ejercicio por defecto
-        document.addEventListener('DOMContentLoaded', function() {
-            toggleExercise(1);
-        });
+
+
+// Abrir el primer ejercicio por defecto
+document.addEventListener('DOMContentLoaded', function() {
+    toggleExercise(1);
+});
+
 // Agregar evento de clic al encabezado del ejercicio
 exerciseHeader.addEventListener("click", () => {
    document.querySelector(".exercise").classList.toggle('active');
    document.querySelector(".exerciseContainer").parentElement.classList.toggle('active');
 });
+
+//Ejecutar Ejercicio 1, asignando evento de clic al botón y llamando a la función de prueba
+const btnEjercicio1 = document.getElementById("btn-1");
+btnEjercicio1.addEventListener("click", probarEjercicio1);
