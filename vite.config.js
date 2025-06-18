@@ -1,5 +1,8 @@
 // vite.config.js
-export default {
-    base: 'https://github.com/wclimaco2025/guiaJS_FS29/',
+import {defineConfig} from 'vite'
+
+// https://vite.dev/config/
+export default defineConfig{
+    base: '/guiaJS_FS29/'
   }
   
