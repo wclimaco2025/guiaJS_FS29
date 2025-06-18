@@ -271,6 +271,75 @@ precioFinal: precioFinal
         </div>
     </div>
 </section>`;
+//HTML Ejercicio 6
+const ejercicio6 = `
+<section class="exercise">
+                <div class="exercise-header" onclick="toggleExercise(6)">
+                    <h3>Ejercicio 6: Descuentos en Viajes Turísticos</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="exercise-content" id="exercise-6">
+                    <div class="code-section">
+                        <h4>📝 Código:</h4>
+                        <pre><code>// Ejercicio 6: Calcular descuentos en viajes turísticos desde Palma
+function calcularDescuentoViaje(origen, destino, precioViaje) {
+    let porcentajeDescuento = 0;
+    
+    if (origen.toLowerCase() === 'palma') {
+        switch(destino.toLowerCase()) {
+            case 'la costa del sol':
+                porcentajeDescuento = 5;
+                break;
+            case 'panchimalco':
+                porcentajeDescuento = 10;
+                break;
+            case 'puerto el triunfo':
+                porcentajeDescuento = 15;
+                break;
+            default:
+                porcentajeDescuento = 0;
+        }
+    }
+    
+    const descuento = precioViaje * (porcentajeDescuento / 100);
+    const precioFinal = precioViaje - descuento;
+    
+    return {
+        origen: origen,
+        destino: destino,
+        precioOriginal: precioViaje,
+        porcentajeDescuento: porcentajeDescuento,
+        descuento: descuento,
+        precioFinal: precioFinal
+    };
+}</code></pre>
+                    </div>
+                    <div class="test-section">
+                        <h4>🧪 Prueba el código:</h4>
+                        <div class="grid">
+                            <div class="form-group">
+                                <label>Ciudad de origen:</label>
+                                <input type="text" id="origen6" placeholder="Ej: Palma" value="Palma">
+                            </div>
+                            <div class="form-group">
+                                <label>Destino:</label>
+                                <select id="destino6">
+                                    <option value="">Seleccionar destino...</option>
+                                    <option value="La costa del sol">La costa del sol - 5%</option>
+                                    <option value="Panchimalco">Panchimalco - 10%</option>
+                                    <option value="Puerto el triunfo">Puerto el triunfo - 15%</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Precio del viaje:</label>
+                                <input type="number" id="precio6" placeholder="Ej: 500">
+                            </div>
+                        </div>
+                        <button class="btn" id="btn-6">Calcular Descuento</button>
+                        <div id="resultado6"></div>
+                    </div>
+                </div>
+            </section>`
 
 // Desarrollo de los Ejercicios
 //<!-- Ejercicio 1 -->
@@ -450,13 +519,69 @@ const probarEjercicio5 = ()=>{
         <strong>🚗 Tienda de Coches Ford:</strong><br>
         🏷️ Modelo: ${resultado.modelo}<br>
         💵 Precio Original: USD $${resultado.precioOriginal.toFixed(2)}<br>
-        🎯 Descuento: USD $${resultado.porcentajeDescuento}%<br>
+        🎯 Descuento: ${resultado.porcentajeDescuento}%<br>
         💸 Ahorro: USD $${resultado.descuento.toFixed(2)}<br>
         💰 Precio Final: USD $${resultado.precioFinal.toFixed(2)}
     `); 
 } 
+
+// Ejercicio 6: Calcular descuentos en viajes turísticos desde Palma
+function calcularDescuentoViaje(origen, destino, precioViaje) {
+    let porcentajeDescuento = 0;
+    
+    if (origen.toLowerCase() === 'palma') {
+        switch(destino.toLowerCase()) {
+            case 'la costa del sol':
+                porcentajeDescuento = 5;
+                break;
+            case 'panchimalco':
+                porcentajeDescuento = 10;
+                break;
+            case 'puerto el triunfo':
+                porcentajeDescuento = 15;
+                break;
+            default:
+                porcentajeDescuento = 0;
+        }
+    }
+    
+    const descuento = precioViaje * (porcentajeDescuento / 100);
+    const precioFinal = precioViaje - descuento;
+    
+    return {
+        origen: origen,
+        destino: destino,
+        precioOriginal: precioViaje,
+        porcentajeDescuento: porcentajeDescuento,
+        descuento: descuento,
+        precioFinal: precioFinal
+    };
+}
+const probarEjercicio6 =() =>{
+    const origen = document.querySelector('#origen6').value;
+    const destino = document.querySelector('#destino6').value;
+    const precio = parseFloat(document.querySelector('#precio6').value);
+
+    if (!origen || !destino || isNaN(precio)) {
+        mostrarResultado('resultado6', '❌ Por favor completa todos los campos');
+        return;
+    }
+
+    const resultado = calcularDescuentoViaje(origen, destino, precio);
+    mostrarResultado('resultado6', `
+        <strong>✈️ Viajes Turísticos:</strong><br>
+        📍 Origen: ${resultado.origen}<br>
+        🎯 Destino: ${resultado.destino}<br>
+        💵 Precio Original: ${resultado.precioOriginal.toFixed(2)}<br>
+        🎁 Descuento: ${resultado.porcentajeDescuento}%<br>
+        💸 Ahorro: ${resultado.descuento.toFixed(2)}<br>
+        💰 Precio Final: ${resultado.precioFinal.toFixed(2)}
+    `);
+}
+
 //Inyección del HTML
-app.innerHTML = contenedorPrincipal + ejercicio1 + ejercicio2 + ejercicio3 + ejercicio4 + ejercicio5;
+app.innerHTML = contenedorPrincipal + ejercicio1 + ejercicio2 + ejercicio3 
++ ejercicio4 + ejercicio5 + ejercicio6;
 
 
 const exerciseHeader = document.querySelector(".exercise-header");
@@ -513,3 +638,6 @@ btnEjercicio4.addEventListener("click", probarEjercicio4);
 
 const btnEjercicio5 = document.querySelector("#btn-5");
 btnEjercicio5.addEventListener("click", probarEjercicio5);
+
+const btnEjercicio6 = document.querySelector("#btn-6");
+btnEjercicio6.addEventListener("click", probarEjercicio6);
