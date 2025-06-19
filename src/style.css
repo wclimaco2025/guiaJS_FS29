@@ -113,6 +113,11 @@
             line-height: 1.4;
         }
 
+        .tabla-multiplicar{
+            font-family: monospace;
+            padding: 2px;
+        }
+        
         .test-section {
             background: #e8f5e8;
             border-radius: 10px;
@@ -198,5 +203,10 @@
             
             pre {
                 font-size: 12px;
+            }
+
+            .tabla-multiplicar{
+                font-family: monospace;
+                padding: 2px;
             }
         }

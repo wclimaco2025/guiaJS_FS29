@@ -42,7 +42,7 @@ const contenedorPrincipal = `<main class="container">
 
 // HTML del ejercicio 2
 const ejercicio2 = `<section class="exercise">
-    <div class="exercise-header" onclick="toggleExercise(2)">
+    <div class="exercise-header">
         <h3>Ejercicio 2: Calcular Nota Final</h3>
         <span class="toggle-icon">▼</span>
     </div>
@@ -271,10 +271,11 @@ precioFinal: precioFinal
         </div>
     </div>
 </section>`;
-//HTML Ejercicio 6
+
+//HTML del  Ejercicio 6
 const ejercicio6 = `
 <section class="exercise">
-                <div class="exercise-header" onclick="toggleExercise(6)">
+                <div class="exercise-header" >
                     <h3>Ejercicio 6: Descuentos en Viajes Turísticos</h3>
                     <span class="toggle-icon">▼</span>
                 </div>
@@ -340,6 +341,204 @@ function calcularDescuentoViaje(origen, destino, precioViaje) {
                     </div>
                 </div>
             </section>`
+
+//HTML del Ejercicio 7
+const ejercicio7 = `
+<section class="exercise">
+                <div class="exercise-header" >
+                    <h3>Ejercicio 7: Análisis de 10 Valores Enteros</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="exercise-content" id="exercise-7">
+                    <div class="code-section">
+                        <h4>📝 Código:</h4>
+                        <pre><code>// Ejercicio 7: Análisis de 10 valores enteros
+function analizarValores(valores) {
+    let negativos = 0;
+    let positivos = 0;
+    let multiplosDe15 = 0;
+    let sumaPares = 0;
+    
+    for (let i = 0; i < valores.length; i++) {
+        const valor = valores[i];
+        
+        // Contar negativos y positivos
+        if (valor < 0) {
+            negativos++;
+        } else if (valor > 0) {
+            positivos++;
+        }
+        
+        // Contar múltiplos de 15
+        if (valor % 15 === 0 && valor !== 0) {
+            multiplosDe15++;
+        }
+        
+        // Sumar pares
+        if (valor % 2 === 0) {
+            sumaPares += valor;
+        }
+    }
+    
+    return {
+        valores: valores,
+        negativos: negativos,
+        positivos: positivos,
+        multiplosDe15: multiplosDe15,
+        sumaPares: sumaPares
+    };
+}</code></pre>
+                    </div>
+                    <div class="test-section">
+                        <h4>🧪 Prueba el código:</h4>
+                        <p>Ingresa 10 valores enteros separados por comas:</p>
+                        <div class="form-group">
+                            <label>Valores (separados por comas):</label>
+                            <input type="text" id="valores7" placeholder="Ej: -5, 10, 15, -3, 8, 30, 0, 7, -15, 12">
+                        </div>
+                        <button class="btn" id="btn-7">Analizar Valores</button>
+                        <div id="resultado7"></div>
+                    </div>
+                </div>
+            </section>`
+//HTML del Ejercicio 8
+const ejercicio8 = `
+<section class="exercise">
+ <div class="exercise-header">
+                    <h3>Ejercicio 8: Tabla de Multiplicar</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="exercise-content" id="exercise-8">
+                    <div class="code-section">
+                        <h4>📝 Código:</h4>
+                        <pre><code>// Ejercicio 8: Generar tabla de multiplicar del 1 al 10
+function generarTablaMultiplicar(numero) {
+    let tabla = [];
+    
+    for (let i = 1; i <= 10; i++) {
+        const resultado = numero * i;
+        tabla.push(\`\${numero} × \${i} = \${resultado}\`);
+    }
+    
+    return tabla;
+}</code></pre>
+                    </div>
+                    <div class="test-section">
+                        <h4>🧪 Prueba el código:</h4>
+                        <div class="form-group">
+                            <label>Número para la tabla de multiplicar:</label>
+                            <input type="number" id="numero8" placeholder="Ej: 7">
+                        </div>
+                        <button class="btn" id="btn-8">Generar Tabla</button>
+                        <div id="resultado8"></div>
+                    </div>
+                </div>
+            </section>`;
+
+//HTML del Ejercicio 9
+const ejercicio9=` <section class="exercise">
+                <div class="exercise-header" >
+                    <h3>Ejercicio 9: Conversión de Temperatura y Clasificación</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="exercise-content" id="exercise-9">
+                    <div class="code-section">
+                        <h4>📝 Código:</h4>
+                        <pre><code>// Ejercicio 9: Conversión de Celsius a Fahrenheit y clasificación
+function convertirYClasificarTemperatura(celsius) {
+    const fahrenheit = (celsius * 9/5) + 32;
+    let clasificacion;
+    
+    if (fahrenheit >= 14 && fahrenheit < 32) {
+        clasificacion = "Temperatura baja";
+    } else if (fahrenheit >= 32 && fahrenheit < 68) {
+        clasificacion = "Temperatura adecuada";
+    } else if (fahrenheit >= 68 && fahrenheit <= 96) {
+        clasificacion = "Temperatura alta";
+    } else {
+        clasificacion = "Temperatura desconocida";
+    }
+    
+    return {
+        celsius: celsius,
+        fahrenheit: fahrenheit.toFixed(2),
+        clasificacion: clasificacion
+    };
+}</code></pre>
+                    </div>
+                    <div class="test-section">
+                        <h4>🧪 Prueba el código:</h4>
+                        <div class="form-group">
+                            <label>Temperatura en Celsius:</label>
+                            <input type="number" id="celsius9" step="0.1" placeholder="Ej: 25.5">
+                        </div>
+                        <button class="btn" id="btn-9">Convertir y Clasificar</button>
+                        <div id="resultado9"></div>
+                    </div>
+                </section>`
+
+//HTML del Ejercicio 10
+const ejercicio10 = 
+`            <section class="exercise">
+                <div class="exercise-header">
+                    <h3>Ejercicio 10: Promedios de Edades por Turno</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="exercise-content" id="exercise-10">
+                    <div class="code-section">
+                        <h4>📝 Código:</h4>
+                        <pre><code>// Ejercicio 10: Calcular promedios de edades por turno
+function calcularPromediosEdades(edadesManana, edadesTarde, edadesNoche) {
+    function calcularPromedio(edades) {
+        const suma = edades.reduce((acc, edad) => acc + edad, 0);
+        return suma / edades.length;
+    }
+    
+    const promedioManana = calcularPromedio(edadesManana);
+    const promedioTarde = calcularPromedio(edadesTarde);
+    const promedioNoche = calcularPromedio(edadesNoche);
+    
+    let turnoMayor;
+    let promedioMayor = Math.max(promedioManana, promedioTarde, promedioNoche);
+    
+    if (promedioMayor === promedioManana) {
+        turnoMayor = "Mañana";
+    } else if (promedioMayor === promedioTarde) {
+        turnoMayor = "Tarde";
+    } else {
+        turnoMayor = "Noche";
+    }
+    
+    return {
+        promedioManana: promedioManana.toFixed(2),
+        promedioTarde: promedioTarde.toFixed(2),
+        promedioNoche: promedioNoche.toFixed(2),
+        turnoMayor: turnoMayor,
+        promedioMayor: promedioMayor.toFixed(2)
+    };
+}</code></pre>
+                    </div>
+                    <div class="test-section">
+                        <h4>🧪 Prueba el código:</h4>
+                        <div class="form-group">
+                            <label>Edades turno mañana (5 estudiantes, separadas por comas):</label>
+                            <input type="text" id="edadesManana10" placeholder="Ej: 18, 19, 20, 17, 21">
+                        </div>
+                        <div class="form-group">
+                            <label>Edades turno tarde (6 estudiantes, separadas por comas):</label>
+                            <input type="text" id="edadesTarde10" placeholder="Ej: 22, 23, 20, 19, 24, 18">
+                        </div>
+                        <div class="form-group">
+                            <label>Edades turno noche (11 estudiantes, separadas por comas):</label>
+                            <input type="text" id="edadesNoche10" placeholder="Ej: 25, 30, 28, 26, 32, 29, 27, 31, 24, 33, 35">
+                        </div>
+                        <button class="btn" id="btn-10">Calcular Promedios</button>
+                        <div id="resultado10"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>`;
 
 // Desarrollo de los Ejercicios
 //<!-- Ejercicio 1 -->
@@ -578,10 +777,230 @@ const probarEjercicio6 =() =>{
         💰 Precio Final: ${resultado.precioFinal.toFixed(2)}
     `);
 }
+// Ejercicio 7: Análisis de valores
+function analizarValores(valores) {
+    let negativos = 0;
+    let positivos = 0;
+    let multiplosDe15 = 0;
+    let sumaPares = 0;
+    
+    for (let i = 0; i < valores.length; i++) {
+        const valor = valores[i];
+        
+        // Contar negativos y positivos
+        if (valor < 0) {
+            negativos++;
+        } else if (valor > 0) {
+            positivos++;
+        }
+        
+        // Contar múltiplos de 15
+        if (valor % 15 === 0 && valor !== 0) {
+            multiplosDe15++;
+        }
+        
+        // Sumar pares
+        if (valor % 2 === 0) {
+            sumaPares += valor;
+        }
+    }
+    
+    return {
+        valores: valores,
+        negativos: negativos,
+        positivos: positivos,
+        multiplosDe15: multiplosDe15,
+        sumaPares: sumaPares
+    };
+}
+
+const probarEjercicio7 =() =>{
+    const valoresTexto = document.getElementById('valores7').value;
+    
+    if (!valoresTexto) {
+        mostrarResultado('resultado7', '❌ Por favor ingresa los valores');
+        return;
+    }
+
+    const valores = valoresTexto.split(',').map(val => parseInt(val.trim())).filter(val => !isNaN(val));
+    
+    if (valores.length !== 10) {
+        mostrarResultado('resultado7', '❌ Debes ingresar exactamente 10 valores enteros');
+        return;
+    }
+
+    const resultado = analizarValores(valores);
+    mostrarResultado('resultado7', `
+        <strong>📊 Análisis de 10 Valores:</strong><br>
+        🔢 Valores ingresados: [${resultado.valores.join(', ')}]<br>
+        <br>
+        <strong>Resultados:</strong><br>
+        ❌ Valores negativos: ${resultado.negativos}<br>
+        ✅ Valores positivos: ${resultado.positivos}<br>
+        🔢 Múltiplos de 15: ${resultado.multiplosDe15}<br>
+        ➕ Suma de números pares: ${resultado.sumaPares}
+    `);
+}
+
+// Ejercicio 8: Tabla de multiplicar
+function generarTablaMultiplicar(numero) {
+    let tabla = [];
+    
+    for (let i = 1; i <= 10; i++) {
+        const resultado = numero * i;
+        tabla.push(`${numero} × ${i} = ${resultado}`);
+    }
+    
+    return tabla;
+}
+
+const probarEjercicio8 =() =>{
+    const numero = parseInt(document.querySelector('#numero8').value);
+    
+    if (isNaN(numero)) {
+        mostrarResultado('resultado8', '❌ Por favor ingresa un número válido');
+        return;
+    }
+
+    const tabla = generarTablaMultiplicar(numero);
+    const tablaHTML = tabla.map(linea => `<div class="tabla-multiplicar">${linea}</div>`).join('');
+    
+    mostrarResultado('resultado8', `
+        <strong>📊 Tabla de Multiplicar del ${numero}:</strong><br>
+        ${tablaHTML}
+    `);
+}
+
+// Ejercicio 9: Conversión de temperatura
+function convertirYClasificarTemperatura(celsius) {
+    const fahrenheit = (celsius * 9/5) + 32;
+    let clasificacion;
+    
+    if (fahrenheit >= 14 && fahrenheit < 32) {
+        clasificacion = "Temperatura baja";
+    } else if (fahrenheit >= 32 && fahrenheit < 68) {
+        clasificacion = "Temperatura adecuada";
+    } else if (fahrenheit >= 68 && fahrenheit <= 96) {
+        clasificacion = "Temperatura alta";
+    } else {
+        clasificacion = "Temperatura desconocida";
+    }
+    
+    return {
+        celsius: celsius,
+        fahrenheit: fahrenheit.toFixed(2),
+        clasificacion: clasificacion
+    };
+}
+
+const probarEjercicio9= ()=> {
+    const celsius = parseFloat(document.getElementById('celsius9').value);
+    
+    if (isNaN(celsius)) {
+        mostrarResultado('resultado9', '❌ Por favor ingresa una temperatura válida');
+        return;
+    }
+
+    const resultado = convertirYClasificarTemperatura(celsius);
+    mostrarResultado('resultado9', `
+        <strong>🌡️ Conversión de Temperatura:</strong><br>
+        ❄️ Celsius: ${resultado.celsius}°C<br>
+        🔥 Fahrenheit: ${resultado.fahrenheit}°F<br>
+        📊 Clasificación: ${resultado.clasificacion}
+    `);
+}
+
+// Ejercicio 10: Promedios de edades
+function calcularPromediosEdades(edadesManana, edadesTarde, edadesNoche) {
+    function calcularPromedio(edades) {
+        const suma = edades.reduce((acc, edad) => acc + edad, 0);
+        return suma / edades.length;
+    }
+    
+    const promedioManana = calcularPromedio(edadesManana);
+    const promedioTarde = calcularPromedio(edadesTarde);
+    const promedioNoche = calcularPromedio(edadesNoche);
+    
+    let turnoMayor;
+    let promedioMayor = Math.max(promedioManana, promedioTarde, promedioNoche);
+    
+    if (promedioMayor === promedioManana) {
+        turnoMayor = "Mañana";
+    } else if (promedioMayor === promedioTarde) {
+        turnoMayor = "Tarde";
+    } else {
+        turnoMayor = "Noche";
+    }
+    
+    return {
+        promedioManana: promedioManana.toFixed(2),
+        promedioTarde: promedioTarde.toFixed(2),
+        promedioNoche: promedioNoche.toFixed(2),
+        turnoMayor: turnoMayor,
+        promedioMayor: promedioMayor.toFixed(2)
+    };
+}
+
+const probarEjercicio10= ()=> {
+    const edadesMananaTexto = document.querySelector('#edadesManana10').value;
+    const edadesTardeTexto = document.querySelector('#edadesTarde10').value;
+    const edadesNocheTexto = document.querySelector('#edadesNoche10').value;
+
+    if (!edadesMananaTexto || !edadesTardeTexto || !edadesNocheTexto) {
+        mostrarResultado('resultado10', '❌ Por favor completa todos los campos');
+        return;
+    }
+
+    const edadesManana = [];
+    const arrayManana = edadesMananaTexto.split(',');
+    for (let i = 0; i < arrayManana.length; i++) {
+        const edad = parseInt(arrayManana[i].trim());
+        if (!isNaN(edad)) {
+            edadesManana.push(edad);
+        }
+    }
+
+    const edadesTarde = [];
+    const arrayTarde = edadesTardeTexto.split(',');
+    for (let i = 0; i < arrayTarde.length; i++) {
+        const edad = parseInt(arrayTarde[i].trim());
+        if (!isNaN(edad)) {
+            edadesTarde.push(edad);
+        }
+    }
+
+    const edadesNoche = [];
+    const arrayNoche = edadesNocheTexto.split(',');
+    for (let i = 0; i < arrayNoche.length; i++) {
+        const edad = parseInt(arrayNoche[i].trim());
+        if (!isNaN(edad)) {
+            edadesNoche.push(edad);
+        }
+    }
+
+    if (edadesManana.length !== 5 || edadesTarde.length !== 6 || edadesNoche.length !== 11) {
+        mostrarResultado('resultado10', '❌ Debes ingresar exactamente 5 edades para mañana, 6 para tarde y 11 para noche');
+        return;
+    }
+
+    const resultado = calcularPromediosEdades(edadesManana, edadesTarde, edadesNoche);
+    mostrarResultado('resultado10', `
+        <strong>📊 Análisis de Edades por Turno:</strong><br>
+        <br>
+        <strong>Promedios por turno:</strong><br>
+        🌅 Turno Mañana: ${resultado.promedioManana} años<br>
+        🌆 Turno Tarde: ${resultado.promedioTarde} años<br>
+        🌙 Turno Noche: ${resultado.promedioNoche} años<br>
+        <br>
+        <strong>🏆 Turno con mayor promedio de edad:</strong><br>
+        ${resultado.turnoMayor} con ${resultado.promedioMayor} años de promedio
+    `);
+}
+
 
 //Inyección del HTML
 app.innerHTML = contenedorPrincipal + ejercicio1 + ejercicio2 + ejercicio3 
-+ ejercicio4 + ejercicio5 + ejercicio6;
++ ejercicio4 + ejercicio5 + ejercicio6 + ejercicio7 + ejercicio8 + ejercicio9 + ejercicio10;
 
 
 const exerciseHeader = document.querySelector(".exercise-header");
@@ -641,3 +1060,15 @@ btnEjercicio5.addEventListener("click", probarEjercicio5);
 
 const btnEjercicio6 = document.querySelector("#btn-6");
 btnEjercicio6.addEventListener("click", probarEjercicio6);
+
+const btnEjercicio7 = document.querySelector("#btn-7");
+btnEjercicio7.addEventListener("click", probarEjercicio7);
+
+const btnEjercicio8 = document.querySelector("#btn-8");
+btnEjercicio8.addEventListener("click", probarEjercicio8);
+
+const btnEjercicio9 = document.querySelector("#btn-9");
+btnEjercicio9.addEventListener("click", probarEjercicio9);
+
+const btnEjercicio10 = document.querySelector("#btn-10");
+btnEjercicio10.addEventListener("click", probarEjercicio10);
