@@ -1,18 +1,46 @@
 import './style.css'
 
-//Construyendo pagina principal
-const app= document.querySelector("#app");
-const contenedorPrincipal = `<main class="container">
-        <header class="header">
-            <h1>🚀 Guía de Ejercicios JavaScript</h1>
-            <p>Estructuras de Control - Academia Kodigo</p>
-        </header>
-    </main>`;
+// Función para manejar el toggle de los ejercicios
+function toggleExercise(event) {
+    const header = event.target.closest('.exercise-header');
+    if (!header) return;
+    
+    const content = header.nextElementSibling;
+    const icon = header.querySelector('.toggle-icon');
+    
+    if (content.style.display === 'none' || !content.style.display) {
+        content.style.display = 'block';
+        icon.textContent = '▼';
+    } else {
+        content.style.display = 'none';
+        icon.textContent = '▶';
+    }
+}
 
- // HTML del ejercicio 1   
+// Agregar event listeners cuando el DOM esté cargado
+document.addEventListener('DOMContentLoaded', () => {
+    const exerciseHeaders = document.querySelectorAll('.exercise-header');
+    const exerciseContents = document.querySelectorAll('.exercise-content');
+    
+    // Ocultar todos los contenidos inicialmente
+    exerciseContents.forEach(content => {
+        content.style.display = 'none';
+    });
+    
+    // Cambiar el ícono inicial a ▶
+    exerciseHeaders.forEach(header => {
+        header.style.cursor = 'pointer';
+        const icon = header.querySelector('.toggle-icon');
+        icon.textContent = '▶';
+        header.addEventListener('click', toggleExercise);
+    });
+});
+
+
+
+ // HTML del ejercicio 1   <section class="content">
  const ejercicio1 = 
- `<section class="content">
-            <div class="exercise">
+ `<section class="exercise">
                 <div class="exercise-header" >
                     <h3>Ejercicio 1: Verificar Mayoría de Edad</h3>
                     <span class="toggle-icon">▼</span>
@@ -35,13 +63,13 @@ const contenedorPrincipal = `<main class="container">
                         </div>
                         <button class="btn" id="btn-1">Verificar Edad</button>
                         <div id="resultado1"></div>
-                    </div>
                 </div>
             </div>
 </section>`;
 
-// HTML del ejercicio 2
-const ejercicio2 = `<section class="exercise">
+// HTML del ejercicio 2 
+const ejercicio2 = `
+<section class="exercise">
     <div class="exercise-header">
         <h3>Ejercicio 2: Calcular Nota Final</h3>
         <span class="toggle-icon">▼</span>
@@ -61,7 +89,6 @@ const ejercicio2 = `<section class="exercise">
         }
             </code></pre>
         </div>
-    </div>
     <div class="test-section">
         <h4>🧪 Prueba el código:</h4>
         <div class="grid">
@@ -93,8 +120,7 @@ const ejercicio2 = `<section class="exercise">
         <button class="btn" id="btn-2" >Calcular Nota Final</button>
         <div id="resultado2"></div>
     </div>
-</div>
-</div>
+    </div>
 </section>`
 
 // HTML del ejercicio 3
@@ -998,14 +1024,29 @@ const probarEjercicio10= ()=> {
 }
 
 
+//Construyendo pagina principal
+const app = document.querySelector("#app");
+const contenedorPrincipal = `<main class="container">
+        <header class="header">
+            <h1>🚀 Guía de Ejercicios JavaScript</h1>
+            <p>Estructuras de Control - Academia Kodigo</p>
+        </header>
+        <div class="content">
+        ${ejercicio1}
+        ${ejercicio2}
+        ${ejercicio3}
+        ${ejercicio4}
+        ${ejercicio5}
+        ${ejercicio6}
+        ${ejercicio7}
+        ${ejercicio8}
+        ${ejercicio9}
+        ${ejercicio10}
+        </div>
+    </main>`;
+
 //Inyección del HTML
-app.innerHTML = contenedorPrincipal + ejercicio1 + ejercicio2 + ejercicio3 
-+ ejercicio4 + ejercicio5 + ejercicio6 + ejercicio7 + ejercicio8 + ejercicio9 + ejercicio10;
-
-
-const exerciseHeader = document.querySelector(".exercise-header");
-
-
+app.innerHTML = contenedorPrincipal;
 
 // Mostrar todos los ejercicios al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
@@ -1026,7 +1067,7 @@ document.addEventListener('DOMContentLoaded', function() {
 }); */
 
 // funciones para mostrar y ocultar el contenido del ejercicio
-function toggleExercise(numero) {
+function toggleExerciseOld(numero) {
     const exercise = document.querySelector(`#exercise-${numero}`);
     if (exercise) {
         exercise.classList.add('active');
